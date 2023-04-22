@@ -12,7 +12,4 @@ public class IsmsApplication {
 
 		SpringApplication.run(IsmsApplication.class, args);
 	}
-
-
-
 }
