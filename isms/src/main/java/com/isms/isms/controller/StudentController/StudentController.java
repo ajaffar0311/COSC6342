@@ -1,5 +1,7 @@
 package com.isms.isms.controller.StudentController;
 
+import com.isms.isms.controller.Exceptions.ErrorResponse;
+import com.isms.isms.controller.Exceptions.NotFoundException;
 import com.isms.isms.entity.Student;
 import com.isms.isms.service.StudentService.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,11 +86,11 @@ public class StudentController {
     // Add an exception handler using @ExceptionHandler
 
     @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exc) {
+    public ResponseEntity<ErrorResponse> handleException(NotFoundException exc) {
 
         // create a StudentErrorResponse
 
-        StudentErrorResponse error = new StudentErrorResponse();
+        ErrorResponse error = new ErrorResponse();
 
         error.setStatus(HttpStatus.NOT_FOUND.value());
         error.setMessage(exc.getMessage());
@@ -102,10 +104,10 @@ public class StudentController {
     // add another exception handler ... to catch any exception (catch all)
 
     @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(Exception exc) {
+    public ResponseEntity<ErrorResponse> handleException(Exception exc) {
 
         // create a StudentErrorResponse
-        StudentErrorResponse error = new StudentErrorResponse();
+        ErrorResponse error = new ErrorResponse();
 
         error.setStatus(HttpStatus.BAD_REQUEST.value());
         error.setMessage(exc.getMessage());

@@ -1,20 +1,20 @@
-package com.isms.isms.controller.StudentController;
+package com.isms.isms.controller.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-public class StudentRestExceptionHandler {
+public class RestExceptionHandler {
 
 
     // add exception handling code here
 
     @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exc) {
+    public ResponseEntity<ErrorResponse> handleException(NotFoundException exc) {
 
-        // create a StudentErrorResponse
+        // create a CourseErrorResponse
 
-        StudentErrorResponse error = new StudentErrorResponse();
+        ErrorResponse error = new ErrorResponse();
 
         error.setStatus(HttpStatus.NOT_FOUND.value());
         error.setMessage(exc.getMessage());
@@ -28,10 +28,10 @@ public class StudentRestExceptionHandler {
     // add another exception handler ... to catch any exception (catch all)
 
     @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(Exception exc) {
+    public ResponseEntity<ErrorResponse> handleException(Exception exc) {
 
-        // create a StudentErrorResponse
-        StudentErrorResponse error = new StudentErrorResponse();
+        // create a ProfessorErrorResponse
+        ErrorResponse error = new ErrorResponse();
 
         error.setStatus(HttpStatus.BAD_REQUEST.value());
         error.setMessage(exc.getMessage());

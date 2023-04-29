@@ -1,11 +1,9 @@
 package com.isms.isms.controller.CourseController;
 
-import com.isms.isms.controller.ProfessorController.ProfessorErrorResponse;
-import com.isms.isms.controller.ProfessorController.ProfessorNotFoundException;
+import com.isms.isms.controller.Exceptions.ErrorResponse;
+import com.isms.isms.controller.Exceptions.NotFoundException;
 import com.isms.isms.entity.Courses;
-import com.isms.isms.entity.Professor;
 import com.isms.isms.service.CourseService.CourseService;
-import com.isms.isms.service.ProfessorService.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -89,11 +87,11 @@ public class CourseController {
     // Add an exception handler using @ExceptionHandler
 
     @ExceptionHandler
-    public ResponseEntity<CourseErrorResponse> handleException(CourseNotFoundException exc) {
+    public ResponseEntity<ErrorResponse> handleException(NotFoundException exc) {
 
         // create a StudentErrorResponse
 
-        CourseErrorResponse error = new CourseErrorResponse();
+        ErrorResponse error = new ErrorResponse();
 
         error.setStatus(HttpStatus.NOT_FOUND.value());
         error.setMessage(exc.getMessage());
@@ -107,10 +105,10 @@ public class CourseController {
     // add another exception handler ... to catch any exception (catch all)
 
     @ExceptionHandler
-    public ResponseEntity<CourseErrorResponse> handleException(Exception exc) {
+    public ResponseEntity<ErrorResponse> handleException(Exception exc) {
 
         // create a StudentErrorResponse
-        CourseErrorResponse error = new CourseErrorResponse();
+        ErrorResponse error = new ErrorResponse();
 
         error.setStatus(HttpStatus.BAD_REQUEST.value());
         error.setMessage(exc.getMessage());
