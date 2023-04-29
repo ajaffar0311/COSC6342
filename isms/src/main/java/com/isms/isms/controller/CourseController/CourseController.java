@@ -1,10 +1,14 @@
 package com.isms.isms.controller.CourseController;
 
+import com.isms.isms.controller.ProfessorController.ProfessorErrorResponse;
+import com.isms.isms.controller.ProfessorController.ProfessorNotFoundException;
 import com.isms.isms.entity.Courses;
 import com.isms.isms.entity.Professor;
 import com.isms.isms.service.CourseService.CourseService;
 import com.isms.isms.service.ProfessorService.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -80,6 +84,40 @@ public class CourseController {
         courseService.deleteById(courseId);
 
         return "Deleted course id - " + courseId;
+    }
+
+    // Add an exception handler using @ExceptionHandler
+
+    @ExceptionHandler
+    public ResponseEntity<CourseErrorResponse> handleException(CourseNotFoundException exc) {
+
+        // create a StudentErrorResponse
+
+        CourseErrorResponse error = new CourseErrorResponse();
+
+        error.setStatus(HttpStatus.NOT_FOUND.value());
+        error.setMessage(exc.getMessage());
+        error.setTimeStamp(System.currentTimeMillis());
+
+        // return ResponseEntity
+
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
+    // add another exception handler ... to catch any exception (catch all)
+
+    @ExceptionHandler
+    public ResponseEntity<CourseErrorResponse> handleException(Exception exc) {
+
+        // create a StudentErrorResponse
+        CourseErrorResponse error = new CourseErrorResponse();
+
+        error.setStatus(HttpStatus.BAD_REQUEST.value());
+        error.setMessage(exc.getMessage());
+        error.setTimeStamp(System.currentTimeMillis());
+
+        // return ResponseEntity
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
 }
