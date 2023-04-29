@@ -1,4 +1,4 @@
-package com.isms.isms.service;
+package com.isms.isms.service.StudentService;
 
 import com.isms.isms.entity.Student;
 

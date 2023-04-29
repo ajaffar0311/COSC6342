@@ -4,7 +4,7 @@ package com.isms.isms.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="student")
+@Table(name="professor")
 public class Professor {
 
     @Id

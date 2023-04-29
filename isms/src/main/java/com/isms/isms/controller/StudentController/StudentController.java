@@ -1,7 +1,7 @@
-package com.isms.isms.controller;
+package com.isms.isms.controller.StudentController;
 
 import com.isms.isms.entity.Student;
-import com.isms.isms.service.StudentService;
+import com.isms.isms.service.StudentService.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

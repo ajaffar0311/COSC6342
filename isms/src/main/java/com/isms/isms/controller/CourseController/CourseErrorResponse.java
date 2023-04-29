@@ -1,16 +1,16 @@
-package com.isms.isms.controller;
+package com.isms.isms.controller.CourseController;
 
-public class StudentErrorResponse {
+public class CourseErrorResponse {
 
     private int status;
     private String message;
     private long timeStamp;
 
-    public StudentErrorResponse() {
+    public CourseErrorResponse() {
 
     }
 
-    public StudentErrorResponse(int status, String message, long timeStamp) {
+    public CourseErrorResponse(int status, String message, long timeStamp) {
         this.status = status;
         this.message = message;
         this.timeStamp = timeStamp;

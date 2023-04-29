@@ -1,4 +1,4 @@
-package com.isms.isms.controller;
+package com.isms.isms.controller.StudentController;
 
 public class StudentNotFoundException extends RuntimeException{
 

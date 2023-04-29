@@ -1,4 +1,4 @@
-package com.isms.isms.controller;
+package com.isms.isms.controller.StudentController;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
