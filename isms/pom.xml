@@ -8,11 +8,11 @@
 		<version>3.0.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.luv2code.springboot</groupId>
+	<groupId>com.isms.springboot</groupId>
 	<artifactId>cruddemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cruddemo</name>
-	<description>Demo project for Spring Boot</description>
+	<description>isms project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

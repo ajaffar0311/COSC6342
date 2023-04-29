@@ -5,25 +5,27 @@ import com.isms.isms.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+
 @RestController
 @RequestMapping("/api")
-public class StudentController {
-
+public class StudentRestController {
     private StudentService studentService;
 
     @Autowired
-    public StudentController(StudentService studentService) {
+    public StudentRestController(StudentService studentService) {
         this.studentService = studentService;
     }
 
-    // expose "/students" and return a list of students
+    // expose "/Students" and return a list of Students
     @GetMapping("/students")
     public List<Student> findAll() {
         return studentService.findAll();
     }
 
-    // add mapping for GET /students/{studentId}
+    // add mapping for GET /Students/{StudentId}
+
     @GetMapping("/students/{studentId}")
     public Student getStudent(@PathVariable int studentId) {
 
@@ -36,7 +38,7 @@ public class StudentController {
         return theStudent;
     }
 
-    // add mapping for POST /students - add new student
+    // add mapping for POST /Students - add new Student
 
     @PostMapping("/students")
     public Student addStudent(@RequestBody Student theStudent) {
@@ -51,7 +53,7 @@ public class StudentController {
         return dbStudent;
     }
 
-    // add mapping for PUT /students - update existing student
+    // add mapping for PUT /Students - update existing Student
 
     @PutMapping("/students")
     public Student updateStudent(@RequestBody Student theStudent) {
@@ -61,7 +63,7 @@ public class StudentController {
         return dbStudent;
     }
 
-    // add mapping for DELETE /students/{studentId} - delete student
+    // add mapping for DELETE /Students/{StudentId} - delete Student
 
     @DeleteMapping("/students/{studentId}")
     public String deleteStudent(@PathVariable int studentId) {
@@ -76,7 +78,6 @@ public class StudentController {
 
         studentService.deleteById(studentId);
 
-        return "Deleted student id - " + studentId;
+        return "Deleted Student id - " + studentId;
     }
-
 }
