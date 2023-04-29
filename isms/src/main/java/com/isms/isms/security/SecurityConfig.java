@@ -45,10 +45,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/professors").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/professors/**").hasRole("ADMIN")
 
-                        .requestMatchers(HttpMethod.GET, "/api/courses").hasRole("PROFESSOR")
-                        .requestMatchers(HttpMethod.GET, "/api/courses").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/courses").hasRole("USER")
                         .requestMatchers(HttpMethod.GET, "/api/courses/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/api/courses").hasRole("PROFESSOR")
+                        .requestMatchers(HttpMethod.GET, "/api/courses").hasRole("ADMIN")
+
                         .requestMatchers(HttpMethod.GET, "/api/courses/**").hasRole("PROFESSOR")
                         .requestMatchers(HttpMethod.GET, "/api/courses/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/courses").hasRole("ADMIN")
